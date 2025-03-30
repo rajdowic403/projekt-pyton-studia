@@ -12,23 +12,29 @@ class UserDialog(QDialog):
         self.setWindowTitle("Panel główny")
         self.layout = QVBoxLayout()
         
-        self.koszyk_button = QPushButton("Dodaj do Koszyka")
-        self.dodaj_button.clicked.connect(self.koszyk_dodawania)
-        self.layout.addWidget(self.dodaj_button)
-        
         self.wyswietl_button = QPushButton("Wyświetl listę")
         self.wyswietl_button.clicked.connect(self.wyswietl_liste)
         self.layout.addWidget(self.wyswietl_button)
         
         self.produkty_list_widget = QListWidget()
         self.layout.addWidget(self.produkty_list_widget)
-        
+
+        self.koszyk_button = QPushButton("Dodaj do Koszyka")
+        self.dodaj_button.clicked.connect(self.koszyk_dodawania)
+        self.layout.addWidget(self.dodaj_button)
+
+        self.koszyk_list_widget = QListWidget()
+        self.layout.addWidget(self.koszyk_list_widget)
+
+
         self.podlicz_button = QPushButton("Podlicz")
         self.podlicz_button.clicked.connect(self.podlicz_cene)
         self.layout.addWidget(self.podlicz_button)
+
+
         
         self.setLayout(self.layout)
-    
+    ##tu ma być fukcjolaność do obsługi bazy danych
     def koszyk_dodawania(self):
         dialog = dodajDoKoszyka(self)
         if dialog.exec_() == QDialog.Accepted:
